@@ -33,7 +33,7 @@ export class SipComponent {
     this.loading = true
     this.http.post(`http://34.234.150.41:5151/transactions/updateportfolio?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&price=${this.amount}&unit=1`, {},{responseType:'text'}).subscribe((data) => {
       console.log(data)
-   
+
       this.loading = false
       this.success=true
       setTimeout(() => {
@@ -41,7 +41,7 @@ export class SipComponent {
         document.getElementById('modalclose')?.click()
         this.router.navigate(['dashboard'])
       }, 2000);
-      
+
     }, err => {
       console.log(err)
       this.loading = false

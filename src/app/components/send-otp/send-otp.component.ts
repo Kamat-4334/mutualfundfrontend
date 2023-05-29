@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./send-otp.component.css']
 })
 export class SendOtpComponent {
+  password:any
+  confirmPassword:any
   constructor(private router:Router){}
+
+
   showUpdate(){
     this.router.navigate(['/update'])
   }

@@ -59,7 +59,7 @@ export class VarifyotpComponent {
     this.api.verify(this.email, Number(this.otp)).subscribe(
       (res) => {
         if(res.includes('Enter Correct OTP')){
-        alert('Enter Correct OTP')
+        // alert('Enter Correct OTP')
 
          console.log(res);
         console.log(this.otp);

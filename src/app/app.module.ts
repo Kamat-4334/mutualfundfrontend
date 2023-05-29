@@ -41,6 +41,7 @@ import { Searchbox2Component } from './components/searchbox2/searchbox2.componen
 import { PaymentoptionComponent } from './components/paymentoption/paymentoption.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { VarifyotpComponent } from './components/varifyotp/varifyotp.component';
+import { SendOtpComponent } from './components/send-otp/send-otp.component';
 
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
@@ -81,10 +82,8 @@ export function playerFactory() {
     Searchbox2Component,
     PaymentoptionComponent,
     ForgotpasswordComponent,
-    VarifyotpComponent
-
-
-
+    VarifyotpComponent,
+    SendOtpComponent
   ],
   imports: [
     BrowserModule,

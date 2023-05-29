@@ -8,28 +8,47 @@
   </head>
   <body>
     <div class="position-absolute top-50 start-50 translate-middle">
-      <div class="card" style="width: 18rem; height: 18rem;">
+      <div class="card" style="width: 18rem; height: 18rem">
         <div class="card-body">
-          <h5 class="card-title text-center" style="color:teal;">Update Password</h5>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              placeholder="enter the password!"
-            />
-          </div>
-          <br />
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input
-              type="confirmPassword"
-              class="form-control"
-              placeholder="enter confirm password!"
-            />
-          </div>
+          <h5 class="card-title text-center" style="color: teal">
+            Update Password
+          </h5>
+          <form>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="enter the password!"
+                [(ngModel)]="password"
+              />
+            </div>
+            <br />
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+              id="confirmPassword"
+              name="confirmPassword"
+                type="confirmPassword"
+                class="form-control"
+                [(ngModel)]="confirmPassword"
+
+                placeholder="enter confirm password!"
+
+              />
+            </div>
+            <br>
+
+            <a
+              class="btn btn-success d-grid"
+              style="background-color: teal"
+              (click)="showUpdate()"
+              >Update</a
+            >
+          </form>
         </div>
-       <a class="btn btn-success" style="background-color: teal;" (click)="showUpdate()">Update</a>
       </div>
     </div>
   </body>

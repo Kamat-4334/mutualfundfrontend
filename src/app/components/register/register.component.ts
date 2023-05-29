@@ -95,7 +95,7 @@ export class RegisterComponent {
           ),
         ],
       ],
-      // confirmPassword:['',Validators.required]
+      confirmPassword:['',Validators.required]
     });
   }
   // Varifyotp(){
@@ -136,10 +136,10 @@ export class RegisterComponent {
           const existEmail = res.split(':')[1].trim();
           alert(`This email ${existEmail}`)
           // alert(res);
-        } else {
+        }else{
           this.router.navigate(['emailVerify', userData.username]);
-
         }
+
 
       },
       (error) => {

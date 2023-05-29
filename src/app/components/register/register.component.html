@@ -149,7 +149,7 @@
               role="status"
               aria-hidden="true"
             ></span>
-            <span *ngIf="!loading"> Submit</span>
+            <span >{{loading ? "Submitting":'Submit'}}</span>
             <span>
               <!-- <span
                 *ngIf="loading"

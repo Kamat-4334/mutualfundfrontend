@@ -62,3 +62,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid teal;
   width: 140px;
 }
+input {
+  color: teal;
+  font-weight: bold;
+}
