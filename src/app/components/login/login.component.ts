@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
-
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
     password:''
   }
 
-  constructor(private loginService:LoginService,private router:Router){ }
+  constructor(private loginService:LoginService,private router:Router, private sharedservice:SharedService){ }
 
 
   ngOnInit(): void {
@@ -28,8 +28,17 @@ export class LoginComponent {
   // user.value=''
   // if(this.loginService.isLoggedIn()){
   //   this.router.navigate(["/dashboard"])
+
   // }
+
+
   }
+
+
+newusername(){
+  this.sharedservice.setUsername(this.credentials.username)
+
+}
 
   onSubmit(){
     // console.log("Form is Submitted!!")

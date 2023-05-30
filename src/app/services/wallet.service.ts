@@ -6,14 +6,14 @@ import {baseUrl} from '../config'
   providedIn: 'root'
 })
 export class WalletService {
-  
+
 
   constructor(private http:HttpClient) { }
-  
+
   addMoney(customerId: number, amount: number){
-    const url = `http://34.234.150.41:1111/mutualfunds/wallet/update/addMoney?customerId=${customerId}&amount=${amount}`; 
-    // const body = { customerId, amount }; 
-    
+    const url = `http://34.234.150.41:1111/mutualfunds/wallet/update/addMoney?customerId=${customerId}&amount=${amount}`;
+    // const body = { customerId, amount };
+
     const headers = { 'Content-Type': 'application/text' };
     return this.http.patch(url,{},{headers:headers, responseType:'text'});
 
@@ -21,9 +21,9 @@ export class WalletService {
     // get('http://localhost:9091/mutualfunds/wallet/update/withdrawMoney?customerId=1&amount=5000').pipe(map((res:any)=>{
     //   return res;
     // }))
-   
 
-   
+
+
   }
   walletBalance(customerId: number){
     const url = `http://34.234.150.41:1111/mutualfunds/wallet/update/getAccountBalance?customerId=${customerId}`
@@ -36,15 +36,20 @@ export class WalletService {
     const headers = { 'Content-Type': 'application/text' };
     return this.http.patch(url,{},{headers:headers,responseType:'text'})
   }
-  
-    addTransactionHistory(customerId:number,transactionTypeId:number,amount:number,walletId:number){
-      const url=`http://34.234.150.41:1111/mutualfunds/wallet/updateTransactionHistory?customerId=${customerId}&transactionTypeId=${transactionTypeId}&walletAmount=${amount}&walletId=${walletId}`
+  // &walletId=${walletId}
+  // ,walletId:number
+    addTransactionHistory(customerId:number,transactionTypeId:number,amount:number){
+      const url=`http://34.234.150.41:1111/mutualfunds/wallet/updateTransactionHistory?customerId=${customerId}&transactionTypeId=${transactionTypeId}&walletAmount=${amount}`
       const headers = {'Content-Type':'application/text'}
       return this.http.patch(url,{},{headers:headers,responseType:'text'})
     }
     walletHistory(customerId:number){
       const url=`http://34.234.150.41:1111/mutualfunds/wallet/history?customerId=${customerId}`
       return this.http.get(url)
+    }
+
+    finduserid(username:string){
+    return this.http.get(`http://34.234.150.41:5151/transactionhistory/userid/${username}`)
     }
 
 }

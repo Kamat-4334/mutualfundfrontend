@@ -48,6 +48,9 @@ export class NavbarComponent {
   goTologin() {
     this.router.navigate(['login']);
   }
+  goTosignUp(){
+    this.router.navigate(['register'])
+  }
 
   getCurrentUser() {
     return this.loginservice.getLoggedInUser();
