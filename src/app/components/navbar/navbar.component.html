@@ -91,15 +91,23 @@
         </div>
 
         <div class="account d-flex flex-row" style="position: relative">
-          <!-- <div
+          <div
             *ngIf="!isLoggedIn()"
             class="collapse navbar-collapse mr-3"
             id="navbarNavAltMarkup"
-          > -->
-            <button id="login" style="color: white" class="btn" (click)="goTologin()">
-              Login
-            </button>
-          <!-- </div> -->
+          >
+          <button
+            id="login"
+            style="color: white"
+            class="btn"
+            (click)="goTologin()"
+          >
+            Login
+          </button>
+          <button style="color: white" class="btn" (click)="goTosignUp()">
+            Signup
+          </button>
+          </div>
 
           <div
             *ngIf="isLoggedIn()"

@@ -16,7 +16,7 @@ import {
 import { from, last } from 'rxjs';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { User } from 'src/app/classes/user';
-
+import { SharedService } from 'src/app/services/shared.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -74,30 +74,34 @@ export class RegisterComponent {
     });
   }
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      username: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
-          ),
+    this.registerForm = this.formBuilder.group(
+      {
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
+            ),
+          ],
         ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^(?=.*[.,?!$&@%^*])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}/
-          ),
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[.,?!$&@%^*])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}/
+            ),
+          ],
         ],
-      ],
-      confirmPassword:['',Validators.required]
-    });
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.MustMatch('password', 'confirmPassword') }
+    );
   }
+
   // Varifyotp(){
   //     this.ro.navigate(['/varifyotp'])
   // }
@@ -105,9 +109,23 @@ export class RegisterComponent {
   get form() {
     return this.registerForm.controls;
   }
-
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formgroup: FormGroup) => {
+      const control = formgroup.controls[controlName];
+      const matchingControl = formgroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors?.['MustMatch']) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ MustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
   onSubmit() {
     this.loading = true;
+
     // if (this.registerForm.invalid) return;
     this.submitted = true;
     if (this.registerForm.invalid) {
@@ -123,24 +141,23 @@ export class RegisterComponent {
       userData.username,
       userData.password
     );
+
     console.log(this.registerForm);
-    this.loading=true
+    this.loading = true;
     this.registration.registerUser(user).subscribe(
       (res: any) => {
         // console.log(res)
         // this.registration.checkEmailExist(userData.username).subscribe((res)=>{
 
         // })
-        this.loading=false
+        this.loading = false;
         if (res.includes('Email Id:')) {
           const existEmail = res.split(':')[1].trim();
-          alert(`This email ${existEmail}`)
+          alert(`This email ${existEmail}`);
           // alert(res);
-        }else{
+        } else {
           this.router.navigate(['emailVerify', userData.username]);
         }
-
-
       },
       (error) => {
         // if(error.error && error.error.includes('Email Id:')[1].trim()){
@@ -155,52 +172,14 @@ export class RegisterComponent {
         this.loading = false;
       }
     );
-
-
-    // let { firstname, lastname, email, password } = this.registerForm.value;
-    // this.api
-    //   .registrationUser(
-    //     String(firstname),
-    //     String(lastname),
-    //     String(email),
-    //     String(password)
-    //   )
-    //   .subscribe(
-    //     (data) => {
-    //       console.log(data);
-    //       console.log('Registration successfully!');
-    //       this.ro.navigate(['/thankyou']);
-    //       // alert('User Registration successfully!');
-    //     },
-    //     (error) => {
-    //       alert('Registration failed!');
-    //       console.log(error);
-    //     }
-    //   );
   }
-
-  // checkAvailability() {
-  //   this.http
-  //     .get<boolean>(
-  //       `http://localhost:9191/register?username=${this.registerForm.value.email}`
-  //     )
-  //     .subscribe(
-  //       (isAvailable: boolean) => {
-  //         this.userAvailable = isAvailable;
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //         this.userAvailable = null;
-  //       }
-  //     );
-  // }
-
-  // confirmpassword() {
-  //   return (
-  //     !(
-  //       this.registerForm.value.password ===
-  //       this.registerForm.value.confirmPassword
-  //     ) && this.registerForm.controls.confirmPassword.touched
-  //   );
-  // }
+  passwordValidation(formgroup: FormGroup) {
+    const passwordcon = formgroup.get('password');
+    const confirmcon = formgroup.get('confirmPassword');
+    if (passwordcon?.value !== confirmcon?.value) {
+      return { passwordMismatch: true };
+    } else {
+      return null;
+    }
+  }
 }
