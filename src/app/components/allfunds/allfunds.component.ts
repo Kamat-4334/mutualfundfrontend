@@ -16,11 +16,12 @@ export class AllfundsComponent {
     this.api.getTopDetail().subscribe((res) => {
       this.detailList = res;
       console.log(this.detailList);
-      
+
     });
     this.api.getBottomDetail().subscribe((res) => {
       this.allBottomDetail = res;
-      
+
+
     });
   }
   fetchById(schemaId: number): void {
@@ -29,5 +30,5 @@ export class AllfundsComponent {
       console.log(data[27]);
     });
   }
- 
+
 }

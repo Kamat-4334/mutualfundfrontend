@@ -165,7 +165,7 @@ display: flex;
 
  max-width: 400px;
 
- background-color: #fff;
+ background-color: white;
 
  border-radius: 8px;
 
@@ -361,7 +361,7 @@ li:hover {
 
 .explore-button {
 
- background-color: #758898;
+ background-color:teal;
 
  color: #ffffff;
 
@@ -384,7 +384,7 @@ li:hover {
 
 .explore-button:hover {
 
- background-color: #7f8890;
+ background-color:teal
 
 }
 
@@ -393,7 +393,7 @@ li:hover {
 
 .view-details {
 
- background-color: #636e64;
+ background-color:teal;
 
  color: #ffffff;
 
@@ -417,7 +417,7 @@ li:hover {
 
 .view-details:hover {
 
- background-color: #90c591;
+ background-color:rgb(18, 145, 145)
 
 }
 
@@ -426,7 +426,7 @@ li:hover {
 
 li.positive {
 
- background-color: rgb(255, 249, 249);
+ background-color: white
 
 }
 
