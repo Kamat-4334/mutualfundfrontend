@@ -11,6 +11,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 
 import { AllfundService } from 'src/app/services/allfund.service';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -31,12 +32,13 @@ export class DashboardHomeComponent implements OnInit {
   allBottomDetail: any[] = [];
 
   data: any;
-  showAllfund:boolean=false;
+  showAllfund: boolean = false;
 
   constructor(
     private api: ApiService,
     private router: Router,
-    private fund: AllfundService
+    private fund: AllfundService,
+    private elementref:ElementRef
   ) {}
 
   ngOnInit() {
@@ -51,11 +53,10 @@ export class DashboardHomeComponent implements OnInit {
     this.api.getBottomDetail().subscribe((res) => {
       this.allBottomDetail = res;
     });
-
   }
 
-  showAllMutualfund(){
-    this.showAllfund =! this.showAllfund
+  showAllMutualfund() {
+    this.showAllfund = !this.showAllfund;
 
     // document.getElementById("horizontal-list")?.scroll({behavior:'smooth',top:-10000})
   }
@@ -83,5 +84,12 @@ export class DashboardHomeComponent implements OnInit {
       .subscribe((data: any[]) => {
         this.mutualFunds = data;
       });
+  }
+
+  scrollElemet(){
+    const element = this.elementref.nativeElement.querySelector('#fundsection')
+if(element){
+  element.scrollIntoView({behavior:'smooth'});
+}
   }
 }

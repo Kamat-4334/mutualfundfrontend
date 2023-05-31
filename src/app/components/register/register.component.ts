@@ -124,11 +124,12 @@ export class RegisterComponent {
     };
   }
   onSubmit() {
-    this.loading = true;
+
 
     // if (this.registerForm.invalid) return;
     this.submitted = true;
     if (this.registerForm.invalid) {
+      this.loading = false;
       return;
     }
     // this.ro.navigate(['/varifyotp'])
