@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-invest-now',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./invest-now.component.css']
 })
 export class InvestNowComponent {
+  // simpleAlert(){
+  //   Swal.fire("Thank you..","","success")
+  // }
 
 }
