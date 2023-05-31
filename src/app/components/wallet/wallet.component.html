@@ -64,6 +64,7 @@
         </div>
         <div *ngIf="showWithdrawCard">
           <app-withdraw-page
+          (balance)="getBalance($event)"
             class="d-flex justify-content-end mr-5"
           ></app-withdraw-page>
         </div>

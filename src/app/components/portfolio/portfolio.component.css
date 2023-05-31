@@ -14,3 +14,13 @@
     margin-left: 10px;
     margin-bottom: 10px;
 } */
+
+table > tbody,th,td{
+    padding:0.65rem;
+}
+
+.col-3{
+    padding: 10px;
+    display: flexbox;
+    flex-direction: column;
+}

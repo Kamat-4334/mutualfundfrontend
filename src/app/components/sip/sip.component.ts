@@ -31,7 +31,7 @@ export class SipComponent {
   }
   buymethod() {
     this.loading = true
-    this.http.post(`http://34.234.150.41:5151/transactions/updateportfolio?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&price=${this.amount}&unit=1`, {},{responseType:'text'}).subscribe((data) => {
+    this.http.post(`http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&type=buy&price=${this.amount}&unit=1`, {},{responseType:'text'}).subscribe((data) => {
       console.log(data)
 
       this.loading = false

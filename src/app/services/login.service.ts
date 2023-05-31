@@ -50,6 +50,7 @@ export class LoginService {
     return true;
   }
   getLoggedInUser() {
+    this.isLoggedIn()
     return this.loggedUser?.sub;
   }
 
@@ -85,5 +86,8 @@ export class LoginService {
 
   updatepassword(password:string,confirm_password:string){
     return this.http.get(`http://34.234.150.41:6161/customer/update?password=${password}&otp=${confirm_password}`)
+  }
+  getUserId(username:string){
+    return this.http.get(`http://34.234.150.41:5151/transactionhistory/userid/${username}`,{responseType:'text'})
   }
 }

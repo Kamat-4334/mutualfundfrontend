@@ -10,12 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./varifyotp.component.css'],
 })
 export class VarifyotpComponent {
+  successfullregistration: boolean = false;
+
   constructor(
     private varifyservice: RegistrationService,
     private route: ActivatedRoute,
     private api: ApiService,
     private router:Router
   ) {
+   
+  }
+  varifyOtp!: FormGroup;
+  email: any;
+  otp: any = '';
+  ngOnInit() {
+    this.email = this.route.snapshot.paramMap.get('email');
     document.addEventListener('DOMContentLoaded', function (event) {
       function OTPInput() {
         const inputs: any = document.querySelectorAll('#otp > *[id]');
@@ -45,16 +54,10 @@ export class VarifyotpComponent {
       OTPInput();
     });
   }
-  varifyOtp!: FormGroup;
-  email: any;
-  otp: any = '';
-  ngOnInit() {
-    this.email = this.route.snapshot.paramMap.get('email');
-
-  }
   submitOTP() {
     document.querySelectorAll('#otp > *[id]').forEach((input: any) => {
       this.otp += input.value;
+      this.successfullregistration = true;
     });
     this.api.verify(this.email, Number(this.otp)).subscribe(
       (res) => {
@@ -80,7 +83,7 @@ export class VarifyotpComponent {
 
   resendOtp() {
     this.api.resend(this.email).subscribe((res) => {
-      alert(res);
+      console.log(res);
     });
     this.otp = '';
   }
