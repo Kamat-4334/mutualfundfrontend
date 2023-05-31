@@ -1,1 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+
+/* .card-body{
+    display: flexbox;
+    flex-wrap: wrap;
+    flex-direction: row;
+    min-height: 0px;
+    padding: 0.25rem;
+    margin-top: 10px;
+
+}
+.col-sm-6{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+} */
+
+table > tbody,th,td{
+    padding:0.65rem;
+}
+
+.col-3{
+    padding: 10px;
+    display: flexbox;
+    flex-direction: column;
+}

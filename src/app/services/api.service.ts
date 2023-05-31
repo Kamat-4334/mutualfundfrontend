@@ -39,6 +39,9 @@ return this.http.put(`http://34.234.150.41:6161/customer/verification?email=${em
   resend(email:string){
     return this.http.get(`http://34.234.150.41:6161/customer/send?email=${email}`)
   }
+  getPortfolio(userId:Number){
+    return this.http.get(`http://34.234.150.41:5151/transactionhistory/user/${userId}`)
+  }
   //signUp
 
   // registrationUser(

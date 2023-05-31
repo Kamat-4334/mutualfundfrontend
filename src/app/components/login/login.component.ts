@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -46,6 +47,7 @@ newusername(){
     if((this.credentials.username!='' && this.credentials.password!='')&& (this.credentials.username!=null && this.credentials.password!=null)){
       console.log("We have to submit the form to server!!");
       //token generate
+
       this.loginService.generateToken(this.credentials).subscribe(
         (response:any)=>{
           //success
@@ -59,7 +61,19 @@ newusername(){
 
 
           this.loginService.loginUser(response.token)
-          this.router.navigate(["/dashboard"])
+          Swal.fire({
+            icon:'success',
+            title:'Login Successful',
+            text:'You have Successfully logged in!',
+            showCancelButton:false,
+            confirmButtonText:'Ok',
+            confirmButtonColor:'#008080'
+          }).then((result)=>{
+            if (result.value) {
+              this.router.navigate(["/dashboard"])
+            }
+          })
+
           // window.location.href=
           this.credentials.password=''
           this.credentials.username=''
@@ -67,7 +81,13 @@ newusername(){
         error=>{
           //error
           console.log(error);
-          this.errorMesage = 'Invalid Username and password'
+          Swal.fire({
+            icon:'error',
+            confirmButtonColor:'#008080',
+            title:'Login Failed!',
+            text:'Invalid Username or password'
+
+          })
 
 
 

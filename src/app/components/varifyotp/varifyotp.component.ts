@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-varifyotp',
   templateUrl: './varifyotp.component.html',
@@ -14,7 +15,7 @@ export class VarifyotpComponent {
     private varifyservice: RegistrationService,
     private route: ActivatedRoute,
     private api: ApiService,
-    private router:Router
+    private router: Router
   ) {
     document.addEventListener('DOMContentLoaded', function (event) {
       function OTPInput() {
@@ -41,7 +42,6 @@ export class VarifyotpComponent {
         }
       }
 
-
       OTPInput();
     });
   }
@@ -50,7 +50,6 @@ export class VarifyotpComponent {
   otp: any = '';
   ngOnInit() {
     this.email = this.route.snapshot.paramMap.get('email');
-
   }
   submitOTP() {
     document.querySelectorAll('#otp > *[id]').forEach((input: any) => {
@@ -58,24 +57,45 @@ export class VarifyotpComponent {
     });
     this.api.verify(this.email, Number(this.otp)).subscribe(
       (res) => {
-        if(res.includes('Enter Correct OTP')){
-        // alert('Enter Correct OTP')
+        console.log(res)
+        if (res.includes('Enter Correct OTP')) {
+          // alert('Enter Correct OTP')
 
-         console.log(res);
-        console.log(this.otp);
-        this.otp = '';
-
+          Swal.fire({
+            title: 'OTP is incorrect',
+            text: 'Please enter correct OTP!',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'ok',
+            confirmButtonColor: '#008080',
+          }).then((result) => {
+            if (result.value) {
+            }
+          });
+          this.otp = '';
+          console.log(res);
+          console.log(this.otp);
+        } else {
+          Swal.fire({
+            icon: 'success',
+            title: 'You have successfully Registered!',
+            text: 'Enjoy!',
+            showCancelButton: true,
+            confirmButtonText: 'ok',
+            confirmButtonColor: '#008080',
+          }).then((result) => {
+            if (result.value) {
+              this.router.navigate(['dashboard']);
+            }
+          });
         }
-        else{
-        this.router.navigate(['dashboard'])
-      }
       },
 
       (error) => {
         console.log(error);
+        this.otp = '';
       }
     );
-
   }
 
   resendOtp() {
@@ -89,8 +109,8 @@ export class VarifyotpComponent {
   //   this.otp = this.route.snapshot.paramMap.get('otp')
   //   this.varifyservice.varifyOtp(this.email,this.otp)
   // }
-  remainingTime :number|any
-  showTimer:boolean = false;
+  remainingTime: number | any;
+  showTimer: boolean = false;
   startCountdown(): void {
     const expirationSeconds = 30; // Set the desired expiration time in seconds
     this.showTimer = true;
@@ -100,14 +120,14 @@ export class VarifyotpComponent {
 
     // Start the countdown timer
     const timer = setInterval(() => {
-    this.remainingTime--;
+      this.remainingTime--;
 
-    if (this.remainingTime <= 0) {
-    // Timer has expired, perform the necessary action
-    clearInterval(timer);
-    // Additional logic for expired timer
-    this.showTimer = false;
-    }
+      if (this.remainingTime <= 0) {
+        // Timer has expired, perform the necessary action
+        clearInterval(timer);
+        // Additional logic for expired timer
+        this.showTimer = false;
+      }
     }, 1000); // Update the remaining time every 1 second (1000 milliseconds)
-    }
+  }
 }

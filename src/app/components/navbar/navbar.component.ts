@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 
 // @Component({
 //   selector: 'app-navbar',
@@ -40,7 +41,21 @@ export class NavbarComponent {
     }
   }
   logout() {
-    this.loginservice.logout();
+    Swal.fire({
+      title:'Confirm Logout',
+      text:'Are you sure you want to logout?',
+      icon:'question',
+      showCancelButton:true,
+      showConfirmButton:true,
+      confirmButtonColor:'#008080',
+      cancelButtonColor:'#d33',
+      confirmButtonText:'Yes, Logout!'
+    }).then((result)=>{
+      if(result.value){
+        this.loginservice.logout()
+      }
+    })
+
   }
   isLoggedIn() {
     return this.loginservice.isLoggedIn();
