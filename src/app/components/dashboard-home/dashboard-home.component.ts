@@ -12,6 +12,10 @@ import { AnimationItem } from 'lottie-web';
 
 import { AllfundService } from 'src/app/services/allfund.service';
 import { ElementRef } from '@angular/core';
+import { WalletService } from 'src/app/services/wallet.service';
+import { LoginService } from 'src/app/services/login.service';
+import { SignUpComponent } from '../sign-up/sign-up.component';
+
 
 @Component({
   selector: 'app-dashboard-home',
@@ -34,14 +38,60 @@ export class DashboardHomeComponent implements OnInit {
   data: any;
   showAllfund: boolean = false;
 
+  portfolio: any = [];
+
+  userId: number | any;
+
   constructor(
     private api: ApiService,
     private router: Router,
     private fund: AllfundService,
-    private elementref:ElementRef
-  ) {}
+    private elementref: ElementRef,
+    private walletservice: WalletService,
+    private allfunds: AllfundService,
+    private loginservice:LoginService,
 
+  ) {}
+  getCurrentUser() {
+    return this.loginservice.getLoggedInUser();
+  }
   ngOnInit() {
+    this.walletservice
+      .finduserid(this.getCurrentUser())
+      .subscribe((response: any) => {
+        console.log(response);
+
+        this.userId = response;
+
+        console.log(this.userId);
+
+        this.api.getPortfolio(this.userId).subscribe((res: any) => {
+          console.log(res);
+
+          this.portfolio = res;
+
+          let allfundData: any | [];
+
+          this.allfunds.getMutualFunds().subscribe((res) => {
+            console.log(res);
+
+            allfundData = res;
+
+            this.portfolio = this.portfolio.map((data: any) => {
+              let index = allfundData.findIndex(
+                (fil: any) => fil.schemaId == data.mutualFundsId
+              );
+
+              let obj = { ...data, funds: { ...allfundData[index] } };
+              return obj;
+            });
+            console.log('portfolio: ', this.portfolio);
+          });
+
+          console.log('unit=' + this.portfolio.unit);
+        });
+      });
+
     this.api.getTopDetail().subscribe((res) => {
       this.detailList = res;
 
@@ -53,6 +103,8 @@ export class DashboardHomeComponent implements OnInit {
     this.api.getBottomDetail().subscribe((res) => {
       this.allBottomDetail = res;
     });
+
+    // paste
   }
 
   showAllMutualfund() {
@@ -86,10 +138,17 @@ export class DashboardHomeComponent implements OnInit {
       });
   }
 
-  scrollElemet(){
-    const element = this.elementref.nativeElement.querySelector('#fundsection')
-if(element){
-  element.scrollIntoView({behavior:'smooth'});
-}
+  scrollElemet() {
+    const element = this.elementref.nativeElement.querySelector('#fundsection');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
+  getFundDetails(id: any) {
+    this.api.detailById(id).subscribe((res) => {
+      return res;
+    });
+  }
+
+
 }

@@ -92,7 +92,7 @@ export class RegisterComponent {
           [
             Validators.required,
             Validators.pattern(
-              /^(?=.*[.,?!$&@%^*])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}/
+              /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/g
             ),
           ],
         ],
