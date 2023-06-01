@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
-<!-- d-flex flex-row-reverse justify-content-between -->
-<!-- style="width: 100%; padding-inline: 2rem" -->
-<div class="row">
+
+<div *ngIf="this.portfolio.length==0" class="row" >
   <div
     data-aos="fade-right"
     data-aos-offset="200"
@@ -28,7 +27,86 @@
   width="500px"
 ></ng-lottie>
 </div>
+<div class="row">
+  <div class="col-md-4 col-lg-4 col-sm-6 justify-content-center align-items-center pt-3 ms-auto" *ngFor="let obj of portfolio">
+    <!-- <div style="width: 100%"> -->
+      <table
+        class="table-success table-striped"
+        style="width: 100%; padding: 1rem"
+      >
+        <thead>
+          <th>
+            {{ obj.transactionDate | date : "dd/MM/yyyy" }}
+          </th>
 
+          <!-- <th>
+            <button class="btn btn-success">sell</button>
+          </th> -->
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>Fund Name:</th>
+
+            <td>
+              {{ obj.funds.schemaName }}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Provider:</th>
+
+            <td>
+              {{ obj.funds.fundHouse }}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Unit:</th>
+
+            <td>
+              {{ obj.unit }}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Unit price:</th>
+
+            <td>
+              {{ obj.price }}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Total :</th>
+
+            <td>
+              {{ obj.price * obj.unit }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    <!-- </div> -->
+  </div>
+
+  <!-- <div class="d-flex">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+
+          <p class="card-text">
+            With supporting text below as a natural lead-in to additional
+            content.
+          </p>
+
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 <app-allfunds> </app-allfunds>
 <div class="d-md-flex ml-3">
   <button type="button" class="btn" (click)="showAllMutualfund()">

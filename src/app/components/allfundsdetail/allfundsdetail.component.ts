@@ -39,7 +39,7 @@ export class AllfundsdetailComponent {
       },100)
       this.chartOptions= {
         animationEnabled:true,
-        theme:'dark1',
+        theme:'#e51a28',
         zoomeEnabled:true,
         title: {
           text: this.fundDetail.schemaName
@@ -54,7 +54,7 @@ export class AllfundsdetailComponent {
         },
         data: [{
           type: "line",
-          color: "#80ffd4",
+          color: "teal",
           dataPoints: dataPoints
         }]
 

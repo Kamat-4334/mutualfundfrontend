@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class SipComponent {
   fundDetails: any;
-  amount: number = 0;
+  amount: number = 500;
   freq: string = '';
   orderDate: string = ''
   id: string | any = ''
@@ -31,8 +31,14 @@ export class SipComponent {
   }
   buymethod() {
     this.loading = true
+
+
     this.http.post(`http://34.234.150.41:5151/transactions/updateportfolio?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&price=${this.amount}&unit=1`, {},{responseType:'text'}).subscribe((data) => {
-      console.log(data)
+      console.log(this.loginService.getLoggedInUser(),data)
+
+      this.http.post(`http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&type=buy&price=${this.fundDetails.currentPrice}&unit=1`,{}).subscribe((res)=>
+      {console.log(res)}
+    )
 
       this.loading = false
       this.success=true

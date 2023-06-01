@@ -14,6 +14,8 @@
             id="disabledTextInput"
             class="form-control"
             placeholder="1000"
+            [(ngModel)]="amount"
+            #amountRef
           />
         </div>
         <div class="mb-3">
@@ -29,34 +31,71 @@
             </label>
           </div>
         </div>
-        <div class="c3">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-          </button>
-          <!-- <input type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" /> -->
+        <!--- -------- continue button --------------------------------------------->
+    <div style="margin-bottom: 90px">
+      <button (click)="continue(amountRef)" type="button" class="btn btn-info">Continue</button>
+        <button id="modalBtn" style="display: none;" type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal"></button>
+    </div>
+  </form>
+  <!-- <button >
+        Launch demo modal
+      </button> -->
+
+  <!-- Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Continue</button> -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div *ngIf="success" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment successful!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </form>
-      <!-- </div> -->
-      <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3"></nav>
-     
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
+        <div class="modal-body">
+          you're order is successfully placed
+        </div>
+        <div class="modal-footer">
+          <button id="modalclose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
         </div>
       </div>
-
+      <div *ngIf="!success" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th>Name :-</th>
+                <td>{{fundDetails.schemaName}}</td>
+              </tr>
+              <tr>
+                <th>Fund House :-</th>
+                <td>{{fundDetails.fundHouse}}</td>
+              </tr>
+              <tr>
+                <th>Date :-</th>
+                <td>{{orderDate}}</td>
+              </tr>
+              <tr>
+                <th>Unit :-</th>
+                <td>{{unit}}</td>
+              </tr>=
+              <tr>
+                <th>Amount :-</th>
+                <td>{{amount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="buymethod()" class="btn btn-success">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Proceed</button>
+        </div>
+      </div>
     </div>
+  </div>

@@ -24,14 +24,14 @@ ngOnInit(){
     console.log(response)
     this.userId =response
     console.log(this.userId)
+ this.api.walletHistory(this.userId).subscribe((data)=>{
+    this.history=data
+    this.history=this.history.sort((a:any,b:any)=>Date.parse(b.transactionDate)-Date.parse(a.transactionDate))
+    console.log(this.history);
 
-    this.api.walletHistory(this.userId).subscribe((data)=>{
-      this.history=data
-      this.history=this.history.sort((a:any,b:any)=>Date.parse(b.transactionDate)-Date.parse(a.transactionDate))
-      console.log(this.history);
+    // this.show=true
+  })
 
-      // this.show=true
-    })
   })
 
 

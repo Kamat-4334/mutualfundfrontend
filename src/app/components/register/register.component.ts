@@ -91,9 +91,8 @@ export class RegisterComponent {
           '',
           [
             Validators.required,
-            Validators.pattern(
-              /^(?=.*[.,?!$&@%^*])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}/
-            ),
+            Validators.minLength(6)
+
           ],
         ],
         confirmPassword: ['', Validators.required],

@@ -50,6 +50,11 @@ export class LoginService {
     return true;
   }
   getLoggedInUser() {
+    if(!this.loggedUser){
+      let token: any = localStorage.getItem('token');
+
+      this.loggedUser = jwtDecode(token);
+    }
     return this.loggedUser?.sub;
   }
 
@@ -70,6 +75,7 @@ export class LoginService {
   //for logout
   logout() {
     localStorage.removeItem('token');
+    this.loggedUser=null
     this.router.navigate(['/']);
     return true;
   }
