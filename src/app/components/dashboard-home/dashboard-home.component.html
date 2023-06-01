@@ -12,17 +12,74 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-3">
+      
+      <div  style="width:100%">
+          <table class="table-success table-striped" style="width:100%;padding:1rem;">
+              <thead>
+                  <th>
+                      <!-- {{obj.transactionDate | date: "dd/MM/yyyy"}} -->
+                  </th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th>
+                          Fund Name:
+                      </th>
+                      <td>
+                          <!-- {{obj.schemaName}} -->
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>
+                          Provider:
+                      </th>
+                      <td>
+                          <!-- {{obj.fundhouse}} -->
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>
+                          Unit:
+                      </th>
+                      <td>
+                         <!-- {{obj.unit}} -->
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>
+                          Unit price:
+                      </th>
+                      <td>
+                          <!-- {{obj.price}}                             -->
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>
+                          Total :
+                      </th>
+                      <td>
+                          <!-- {{obj?.total}} -->
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  
+     
+  </div>
+</div>
+
+
+
 <app-allfunds>
 
 </app-allfunds>
 <div class="d-md-flex ml-3">
   <button type="button" class="btn dropdown-toggle" (click)="showAllMutualfund()">show all funds</button>
   </div>
-<!-- <div *ngIf="showAllfund"> -->
 <div *ngIf="showAllfund " class="container-fluid">
-
-  <!-- <h2>Explore Funds</h2> -->
-
 
   <h1>All FUNDS </h1>
   <ul id="horizontal-list" class="horizontal-list">

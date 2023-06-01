@@ -37,10 +37,10 @@
             <table class="table-success table-striped" style="width:100%;padding:1rem;">
                 <thead>
                     <th>
-                        OrderId|transactionId
+                        {{obj.transactionDate | date: "dd/MM/yyyy"}}
                     </th>
                     <th>
-                        3000/02/02
+                        <button class="btn btn-success">sell</button>
                     </th>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
                             Fund Name:
                         </th>
                         <td>
-                            <!-- {{obj.schemaName}} -->
+                            {{obj.funds.schemaName}}
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +57,7 @@
                             Provider:
                         </th>
                         <td>
-                            <!-- {{obj.fundhouse}} -->
+                            {{obj.funds.fundHouse}}
                         </td>
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@
                             Total :
                         </th>
                         <td>
-                            {{obj?.total}}
+                            {{obj.price * obj.unit}}
                         </td>
                     </tr>
                 </tbody>
