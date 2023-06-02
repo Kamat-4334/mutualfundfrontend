@@ -9,12 +9,12 @@
     </h3>
     <div class="mb-3" style="margin-top: 30px; margin-bottom: 30px">
       <label for="disabledTextInput" class="form-label">SIP amount</label>
-      <input name="amount" type="text" id="disabledTextInput" class="form-control" placeholder="1000" [(ngModel)]="amount" />
+      <input name="amount" type="text" id="disabledTextInput" class="form-control" placeholder="1000" [(ngModel)]="amount" required/>
     </div>
     <div class="mb-3" style="margin-bottom: 30px; margin-top: 30px">
       <label for="disabledTextInput" class="form-label">SIP frequency</label>
       <!-- <input type="text" id="disabledTextInput" class="form-control" placeholder="1000"> -->
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="freq" [(ngModel)]="freq">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="freq" [(ngModel)]="freq" required>
         <option selected>Select SIP frequency</option>
         <option value="Daily">Daily</option>
         <option value="Weakly">Weakly</option>
@@ -24,11 +24,11 @@
     </div>
     <div style="margin-bottom: 30px; margin-top: 30px">
       <label for="disabledTextInput" class="form-label" style="width: 50%">SIP date</label>
-      <input type="date" class="form-control" placeholder="date" aria-label="Server" name="orderDate" [(ngModel)]="orderDate" />
+      <input type="date" class="form-control" placeholder="date" aria-label="Server" name="orderDate" [(ngModel)]="orderDate" required />
     </div>
     <!--------------checkboxxx-------------------------------------------->
     <div class="form-check" style="margin-top: 30px; margin-bottom: 30px">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required/>
       <label class="form-check-label" for="flexCheckDefault">
         Step Up
       </label>
@@ -90,7 +90,7 @@
               </tr>
               <tr>
                 <th>Amount :-</th>
-                <td>$ {{amount}}</td>
+                <td>{{amount}}</td>
               </tr>
             </tbody>
           </table>
