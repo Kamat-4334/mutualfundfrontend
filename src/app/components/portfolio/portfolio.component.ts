@@ -81,12 +81,10 @@ export class PortfolioComponent {
       return res;
     });
   }
-  sellMethod() {
+  sellMethod(fundId: number, price: number, unit: number) {
     this.http
       .post(
-        `http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginservice.getLoggedInUser()}&mutualFundsId=${
-          this.id
-        }&type=sell&price=${this.fundDetails.currentPrice}&${this.fundDetails.unit}`,
+        `http://34.234.150.41:5151/transactionhistory/insert?username=${this.getCurrentUser()}&mutualFundsId=${fundId}&type=sell&price=${price}&unit=${unit}`,
         {}
       )
       .subscribe((res) => {

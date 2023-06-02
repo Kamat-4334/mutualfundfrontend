@@ -24,7 +24,7 @@
         }
 
         ul > li:hover{
-            color:#957bda;
+            color:teal;
             cursor: pointer;
         }
 
