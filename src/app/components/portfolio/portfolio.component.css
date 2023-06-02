@@ -18,6 +18,15 @@
 table > tbody,th,td{
     padding:0.65rem;
 }
+thead > th{
+  border: solid 2px #333;
+}
+/* thead{
+  background-color: #fff;
+} */
+/* thead > th:hover{
+background-color: teal;
+} */
 
 .col-3{
     padding: 10px;

@@ -1,5 +1,19 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: between;
+.container {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: between;
+}
+
+.form-control:focus {
+  color: #495057;
+
+  background-color: #fff;
+
+  border-color: #80bdff;
+
+  outline: 0;
+
+  box-shadow: none !important;
 }

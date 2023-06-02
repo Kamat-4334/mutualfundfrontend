@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="this.portfolio.length==0" class="row" >
+<div *ngIf="this.portfolio.length == 0" class="row">
   <div
     data-aos="fade-right"
     data-aos-offset="200"
@@ -9,83 +9,80 @@
     data-aos-easing="ease-in-out"
     class="rounded float-start col-md-6 col-lg-6 col-sm-12 justify-content-center align-items-center"
   >
-    <h1
-      class=""
-      style="
-        font-size: 4rem;
-      "
-    >
+    <h1 class="" style="font-size: 4rem">
       Didn't Invest Yet?<br />
       Invest Now!
     </h1>
-
   </div>
   <ng-lottie
-  class="mb-5 d-flex col-md-6 col-lg-6 col-sm-12 justify-content-center align-items-center"
-  [options]="options"
-  (animationCreated)="animationCreated($event)"
-  width="500px"
-></ng-lottie>
+    class="mb-5 d-flex col-md-6 col-lg-6 col-sm-12 justify-content-center align-items-center"
+    [options]="options"
+    (animationCreated)="animationCreated($event)"
+    width="500px"
+  ></ng-lottie>
 </div>
 <div class="row">
-  <div class="col-md-4 col-lg-4 col-sm-6 justify-content-center align-items-center pt-3 ms-auto" *ngFor="let obj of portfolio">
+  <div
+    class="col-md-6 col-lg-6 col-sm-12 justify-content-center align-items-center pt-3 ms-auto"
+    *ngFor="let obj of portfolio"
+  >
     <!-- <div style="width: 100%"> -->
-      <table
-        class="table-success table-striped"
-        style="width: 100%; padding: 1rem"
-      >
-        <thead>
-          <th>
-            {{ obj.transactionDate | date : "dd/MM/yyyy" }}
-          </th>
+    <table
+      class="table-success table-striped"
+      style="width: 100%; padding: 1rem"
+    >
+      <thead>
+        <th>
+          {{ obj.transactionDate | date : "dd/MM/yyyy" }}
+        </th>
 
-          <!-- <th>
+        <!-- <th>
             <button class="btn btn-success">sell</button>
           </th> -->
-        </thead>
+      </thead>
 
-        <tbody>
-          <tr>
-            <th>Fund Name:</th>
+      <tbody>
+        <tr>
+          <th>Fund Name:</th>
 
-            <td>
-              {{ obj.funds.schemaName }}
-            </td>
-          </tr>
+          <td>
+            {{ obj.funds.schemaName }}
+          </td>
+        </tr>
 
-          <tr>
-            <th>Provider:</th>
+        <tr>
+          <th>Provider:</th>
 
-            <td>
-              {{ obj.funds.fundHouse }}
-            </td>
-          </tr>
+          <td>
+            {{ obj.funds.fundHouse }}
+          </td>
+        </tr>
 
-          <tr>
-            <th>Unit:</th>
+        <tr>
+          <th>Unit:</th>
 
-            <td>
-              {{ obj.unit }}
-            </td>
-          </tr>
+          <td>
+            {{ obj.unit }}
+          </td>
+        </tr>
 
-          <tr>
-            <th>Unit price:</th>
+        <tr>
+          <th>Unit price:</th>
 
-            <td>
-              {{ obj.price }}
-            </td>
-          </tr>
+          <td>
+            {{ obj.price }}
+          </td>
+        </tr>
 
-          <tr>
-            <th>Total :</th>
+        <tr>
+          <th>Total :</th>
 
-            <td>
-              {{ obj.price * obj.unit }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <td>
+            {{ obj.price * obj.unit }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- </div> -->
   </div>
@@ -107,52 +104,53 @@
     </div>
   </div>
 </div> -->
-<app-allfunds> </app-allfunds>
-<div class="d-md-flex ml-3">
-  <button type="button" class="btn" (click)="showAllMutualfund()">
-    show all funds
-  </button>
-</div>
-<!-- <div *ngIf="showAllfund"> -->
-<div *ngIf="showAllfund" class="container-fluid" id="fundsection">
-  <!-- <h2>Explore Funds</h2> -->
+  <app-allfunds> </app-allfunds>
+  <div class="d-md-flex ml-3">
+    <button type="button" class="btn" (click)="showAllMutualfund()">
+      show all funds
+    </button>
+  </div>
+  <!-- <div *ngIf="showAllfund"> -->
+  <div *ngIf="showAllfund" class="container-fluid" id="fundsection">
+    <!-- <h2>Explore Funds</h2> -->
 
-  <h1>All FUNDS</h1>
-  <ul id="horizontal-list" class="horizontal-list">
-    <li
-      *ngFor="let fund of mutualFunds"
-      [ngClass]="{ positive: fund.delta > 0, negative: fund.delta < 0 }"
-    >
-      <button
-        class="explore-button"
-        [routerLink]="'allfundsdetail/' + fund.schemaId"
-        (click)="scrollElemet()"
+    <h1>All FUNDS</h1>
+    <ul id="horizontal-list" class="horizontal-list">
+      <li
+        *ngFor="let fund of mutualFunds"
+        [ngClass]="{ positive: fund.delta > 0, negative: fund.delta < 0 }"
       >
-        {{ fund.schemaName }}
-      </button>
-
-      <div class="details" [class.show]="true">
-        <p><strong>Fund House:</strong> {{ fund.fundHouse }}</p>
-
-        <p><strong>Category:</strong> {{ fund.schemaCategory }}</p>
-
-        <p><strong>Current Price:</strong> {{ fund.currentPrice }}</p>
-
-        <p>
-          <strong>Delta:</strong>
-          <span [class.gain]="fund.delta > 0"
-            >{{ fund.delta > 0 ? "+" : "" }}{{ fund.delta }}</span
-          >
-        </p>
-
         <button
-          class="view-details"
+          class="explore-button"
           [routerLink]="'allfundsdetail/' + fund.schemaId"
+          (click)="scrollElemet()"
         >
-          View Details
+          {{ fund.schemaName }}
         </button>
-      </div>
-    </li>
-  </ul>
+
+        <div class="details" [class.show]="true">
+          <p><strong>Fund House:</strong> {{ fund.fundHouse }}</p>
+
+          <p><strong>Category:</strong> {{ fund.schemaCategory }}</p>
+
+          <p><strong>Current Price:</strong> {{ fund.currentPrice }}</p>
+
+          <p>
+            <strong>Delta:</strong>
+            <span [class.gain]="fund.delta > 0"
+              >{{ fund.delta > 0 ? "+" : "" }}{{ fund.delta }}</span
+            >
+          </p>
+
+          <button
+            class="view-details"
+            [routerLink]="'allfundsdetail/' + fund.schemaId"
+          >
+            View Details
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- </div> -->
 </div>
-<!-- </div> -->

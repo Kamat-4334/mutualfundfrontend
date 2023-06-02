@@ -540,8 +540,8 @@ table > tbody,th,td{
     padding:0.65rem;
 }
 
-.col-3{
+/* .col-3{
     padding: 10px;
     display: flexbox;
     flex-direction: column;
-}
+} */

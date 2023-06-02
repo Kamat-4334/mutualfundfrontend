@@ -1,156 +1,296 @@
-<!DOCTYPE html>
-<html lang="en" ng-app>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <script
-      src="https://kit.fontawesome.com/85edb2fd4f.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
+<div class="dashboard-header" style="width:100%;margin-bottom: 5rem;">
 
-  <!-- <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script src="https://kit.fontawesome.com/85edb2fd4f.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-</head> -->
+  <nav class="navbar navbar-expand-lg bg-white fixed-top" style="width:100%;">
 
-  <body>
-    <!-- <div class="container-fluid"> -->
-    <nav class="navbar navbar-expand-lg" style="background-color: teal">
-      <div
-        class="d-flex justify-content-between align-items-center"
-        style="width: 100%"
-      >
-        <a class="navbar-brand" routerLink="/">FundFusion</a>
-        <!-- <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <!-- <ul
-            *ngIf="isLoggedIn()"
-            class="navbar-nav ml-auto"
-            style="width: 60%"
-          >
-            <li class="nav-item active"></li>
-          </ul> -->
+    <a class="navbar-brand" routerLink="/">FundFusion</a>
 
-          <ul
-            *ngIf="isLoggedIn()"
-            style="width: 60%"
-            class="navbar-nav ml-auto"
-          >
-            <li class="nav-item active"></li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/dashboard/wallet"
-                >Wallet Details</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/dashboard/portfolio"
-                >Portfolio</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/dashboard"
-                >Invest now &nbsp;<i
-                  class="fa-sharp fa-regular fa-handshake fa-beat"
-                ></i
-              ></a>
-            </li>
-          </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 
-          <div class="container-fluid-4"><app-search-box></app-search-box></div>
-        </div>
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-        <div class="account d-flex flex-row" style="position: relative">
-          <div
-            *ngIf="!isLoggedIn()"
-            class="collapse navbar-collapse mr-3"
-            id="navbarNavAltMarkup"
-          >
-          <button
-            id="login"
-            style="color: white"
-            class="btn"
-            (click)="goTologin()"
-          >
-            Login
-          </button>
-          <button style="color: white" class="btn" (click)="goTosignUp()">
-            Signup
-          </button>
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ml-auto navbar-right-top" style="flex-direction: row;width:auto;">
+
+        <li class="nav-item">
+
+          <div id="custom-search" class="top-search-bar">
+
+            <!-- <input class="form-control" type="text" placeholder="Search.."> -->
+
+            <app-search-box class="form-control"></app-search-box>
+
           </div>
 
-          <div
-            *ngIf="isLoggedIn()"
-            class="collapse navbar-collapse"
-            id="navbarNavAltMarkup"
-          >
-            <!-- <button
-              type="button"
-              style="color: aliceblue"
-              (click)="goTologin()"
-              class="btn-lg mr-2"
-            >
-              Login
-            </button> -->
-            <!-- <a routerLink="register" class="btn btn-success">Signup</a> -->
+          <!-- <app-search-box></app-search-box> -->
 
-            <div class="material-symbols-outlined" id="account-icon">
-              account_circle
-            </div>
-            <div
-              class="dropdown-menu"
-              style="position: absolute; left: -8rem"
-              id="account-menu"
-            >
-              <div class="dropdown-item">
-                <span
-                  class="badge bg-success text-wrap"
-                  style="margin-right: 0.5rem"
-                  >{{ getCurrentUser() }}</span
-                >
+        </li>
+
+        <li *ngIf="isLoggedIn()" class="nav-item dropdown notification">
+
+          <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+
+            aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
+
+              class="indicator"></span></a>
+
+          <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+
+            <li>
+
+              <div class="notification-title"> Notification</div>
+
+              <div class="notification-list">
+
+                <div class="list-group">
+
+                  <a href="#" class="list-group-item list-group-item-action active">
+
+                    <div class="notification-info">
+
+                      <div class="notification-list-user-img"><img
+
+                          src="https://img.icons8.com/office/100/000000/administrator-female.png" alt=""
+
+                          class="user-avatar-md rounded-circle"></div>
+
+                      <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy
+
+                          Hukonah</span>accepted your invitation to join the team.
+
+                        <div class="notification-date">2 min ago</div>
+
+                      </div>
+
+                    </div>
+
+                  </a>
+
+                  <a href="#" class="list-group-item list-group-item-action">
+
+                    <div class="notification-info">
+
+                      <div class="notification-list-user-img"><img
+
+                          src="https://img.icons8.com/color/48/000000/administrator-female.png" alt=""
+
+                          class="user-avatar-md rounded-circle"></div>
+
+                      <div class="notification-list-user-block"><span class="notification-list-user-name">John
+
+                          Sammy</span>updated the email address
+
+                        <div class="notification-date">2 days ago</div>
+
+                      </div>
+
+                    </div>
+
+                  </a>
+
+                  <a href="#" class="list-group-item list-group-item-action">
+
+                    <div class="notification-info">
+
+                      <div class="notification-list-user-img"><img
+
+                          src="https://img.icons8.com/color/100/000000/name.png" alt=""
+
+                          class="user-avatar-md rounded-circle"></div>
+
+                      <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
+
+                          Samso</span> is watching your main repository
+
+                        <div class="notification-date">2 min ago</div>
+
+                      </div>
+
+                    </div>
+
+                  </a>
+
+
+
+
+                </div>
+
               </div>
 
-              <!-- <a class="dropdown-item" href="#">Setting</a> -->
-              <button class="dropdown-item" (click)="logout()">Logout</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- </div> -->
+            </li>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
-</html>
+            <li>
+
+              <div class="list-footer"> <a href="#">View all notifications</a></div>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li *ngIf="isLoggedIn()" class="nav-item dropdown connection">
+
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+
+            aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+
+          <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+
+            <li class="connection-list">
+
+              <div class="row">
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a routerLink="/dashboard" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=6ocfyfPqD0qz&format=png"
+
+                      alt=""> <span>Dashboard</span></a>
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a routerLink="/dashboard/wallet" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=84933&format=png"
+
+                      alt=""> <span>Wallet</span></a>
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a routerLink="/dashboard/portfolio" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);"  src="https://img.icons8.com/?size=512&id=86958&format=png"
+
+                      alt=""> <span>Portfolio</span></a>
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a routerLink="/dashboard/investnow" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=85890&format=png"
+
+                      alt=""> <span>Invest Now</span></a>
+
+                </div>
+
+              </div>
+
+              <!-- <div class="row">
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a href="#" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=85890&format=png"
+
+                      alt=""> <span>Invest Now</span></a>
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a href="#" class="connection-item"><img src="https://img.icons8.com/color/100/000000/remove-ads.png"
+
+                      alt=""><span>Facebook ads</span></a>
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+
+                  <a href="#" class="connection-item"><img src="https://img.icons8.com/wired/64/000000/slack.png"
+
+                      alt=""> <span>Slack</span></a>
+
+                </div>
+
+              </div> -->
+
+            </li>
+
+            <li>
+
+              <div class="conntection-footer"><a href="#">More</a></div>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+        <!-- <li class="nav-item"> -->
+
+          <div
+
+          *ngIf="!isLoggedIn()"
+
+          class="nav-link mr-3 ml-3 align-items-center"
+
+          id="navbarNavAltMarkup"
+
+        >
+
+        <button
+
+          id="login"
+
+          style="color:  teal;"
+
+          class="btn"
+
+          (click)="goTologin()"
+
+        >
+
+          Login
+
+        </button>
+
+        <button style="color: teal;" class="btn" (click)="goTosignUp()">
+
+          Signup
+
+        </button>
+
+        </div>
+
+        <!-- </li> -->
+
+        <li *ngIf="isLoggedIn()" class="nav-item dropdown nav-user">
+
+          <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+
+            aria-haspopup="true" aria-expanded="false"><img
+
+              src="https://img.icons8.com/dusk/100/000000/user-female-circle.png" alt=""
+
+              class="user-avatar-md rounded-circle"></a>
+
+          <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+
+            <div class="nav-user-info">
+
+              <h5 class="mb-0 text-white nav-user-name">{{ getCurrentUser() }}</h5>
+
+              <span class="status"></span><span class="ml-2">Available</span>
+
+            </div>
+
+            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+
+            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+
+            <a class="dropdown-item" (click)="logout()"><i class="fas fa-power-off mr-2"></i>Logout</a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+</div>

@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/login.service';
 import { WalletService } from 'src/app/services/wallet.service';
 import { AllfundService } from 'src/app/services/allfund.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -14,6 +15,8 @@ export class PortfolioComponent {
   portfolio: any = [];
 
   userId: number | any;
+  id: string | any = '';
+  fundDetails: any;
 
   options: AnimationOptions = {
     path: '../../../assets/142582-money-growth.json',
@@ -23,7 +26,8 @@ export class PortfolioComponent {
     private apiService: ApiService,
     private loginservice: LoginService,
     private walletservice: WalletService,
-    private allfunds: AllfundService
+    private allfunds: AllfundService,
+    private http: HttpClient
   ) {}
 
   getCurrentUser() {
@@ -76,5 +80,17 @@ export class PortfolioComponent {
     this.apiService.detailById(id).subscribe((res) => {
       return res;
     });
+  }
+  sellMethod() {
+    this.http
+      .post(
+        `http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginservice.getLoggedInUser()}&mutualFundsId=${
+          this.id
+        }&type=sell&price=${this.fundDetails.currentPrice}&${this.fundDetails.unit}`,
+        {}
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

@@ -82,8 +82,8 @@
 </div>
 
 <div class="row">
-  <div class="col-3" *ngFor="let obj of portfolio">
-    <div style="width: 100%">
+  <div class="col-6 gap-2  pt-3" *ngFor="let obj of portfolio">
+    <!-- <div style="width: 100%"> -->
       <table
         class="table-success table-striped"
         style="width: 100%; padding: 1rem"
@@ -93,9 +93,9 @@
             {{ obj.transactionDate | date : "dd/MM/yyyy" }}
           </th>
 
-          <!-- <th>
-            <button class="btn btn-success">sell</button>
-          </th> -->
+          <th class="d-grid gap-2">
+            <button class="btn" style="background-color: teal;" (click)="sellMethod()">Sell</button>
+          </th>
         </thead>
 
         <tbody>
@@ -140,6 +140,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    <!-- </div> -->
   </div>
 
