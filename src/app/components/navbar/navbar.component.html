@@ -1,182 +1,183 @@
-<div class="dashboard-header" style="width:100%;margin-bottom: 5rem;">
+<div class="dashboard-header" style="width: 100%; margin-bottom: 5rem">
+  <nav class="navbar navbar-expand-lg bg-white fixed-top" style="width: 100%;">
+    <a class="navbar-brand"  routerLink="/">FundFusion</a>
 
-  <nav class="navbar navbar-expand-lg bg-white fixed-top" style="width:100%;">
-
-    <a class="navbar-brand" routerLink="/">FundFusion</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
-
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav ml-auto navbar-right-top" style="flex-direction: row;width:auto;">
-
+      <ul
+        class="navbar-nav ml-auto navbar-right-top"
+        style="flex-direction: row; width: auto"
+      >
         <li class="nav-item">
-
           <div id="custom-search" class="top-search-bar">
-
             <!-- <input class="form-control" type="text" placeholder="Search.."> -->
 
             <app-search-box class="form-control"></app-search-box>
-
           </div>
 
           <!-- <app-search-box></app-search-box> -->
-
         </li>
 
         <li *ngIf="isLoggedIn()" class="nav-item dropdown notification">
-
-          <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
-
-            aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
-
-              class="indicator"></span></a>
+          <a
+            class="nav-link nav-icons"
+            href="#"
+            id="navbarDropdownMenuLink1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span
+          ></a>
 
           <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
-
             <li>
-
-              <div class="notification-title"> Notification</div>
+              <div class="notification-title">Notification</div>
 
               <div class="notification-list">
-
                 <div class="list-group">
-
-                  <a href="#" class="list-group-item list-group-item-action active">
-
+                  <a
+                    href="#"
+                    class="list-group-item list-group-item-action active"
+                  >
                     <div class="notification-info">
-
-                      <div class="notification-list-user-img"><img
-
-                          src="https://img.icons8.com/office/100/000000/administrator-female.png" alt=""
-
-                          class="user-avatar-md rounded-circle"></div>
-
-                      <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy
-
-                          Hukonah</span>accepted your invitation to join the team.
-
-                        <div class="notification-date">2 min ago</div>
-
+                      <div class="notification-list-user-img">
+                        <img
+                          src="https://img.icons8.com/office/100/000000/administrator-female.png"
+                          alt=""
+                          class="user-avatar-md rounded-circle"
+                        />
                       </div>
 
-                    </div>
+                      <div class="notification-list-user-block">
+                        <span class="notification-list-user-name"
+                          >100</span
+                        >Money Received
 
+                        <div class="notification-date">2 min ago</div>
+                      </div>
+                    </div>
                   </a>
 
                   <a href="#" class="list-group-item list-group-item-action">
-
                     <div class="notification-info">
+                      <div class="notification-list-user-img">
+                        <img
+                          src="https://img.icons8.com/color/48/000000/administrator-female.png"
+                          alt=""
+                          class="user-avatar-md rounded-circle"
+                        />
+                      </div>
 
-                      <div class="notification-list-user-img"><img
-
-                          src="https://img.icons8.com/color/48/000000/administrator-female.png" alt=""
-
-                          class="user-avatar-md rounded-circle"></div>
-
-                      <div class="notification-list-user-block"><span class="notification-list-user-name">John
-
-                          Sammy</span>updated the email address
+                      <div class="notification-list-user-block">
+                        <span class="notification-list-user-name"
+                          >200 </span
+                        >Money Withdraw
 
                         <div class="notification-date">2 days ago</div>
-
                       </div>
-
                     </div>
-
                   </a>
 
                   <a href="#" class="list-group-item list-group-item-action">
-
                     <div class="notification-info">
-
-                      <div class="notification-list-user-img"><img
-
-                          src="https://img.icons8.com/color/100/000000/name.png" alt=""
-
-                          class="user-avatar-md rounded-circle"></div>
-
-                      <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
-
-                          Samso</span> is watching your main repository
-
-                        <div class="notification-date">2 min ago</div>
-
+                      <div class="notification-list-user-img">
+                        <img
+                          src="https://img.icons8.com/color/100/000000/name.png"
+                          alt=""
+                          class="user-avatar-md rounded-circle"
+                        />
                       </div>
 
+                      <div class="notification-list-user-block">
+                        <span class="notification-list-user-name"
+                          >5000</span
+                        >
+                        Money Received
+
+                        <div class="notification-date">2 min ago</div>
+                      </div>
                     </div>
-
                   </a>
-
-
-
-
                 </div>
-
               </div>
-
             </li>
 
             <li>
-
-              <div class="list-footer"> <a href="#">View all notifications</a></div>
-
+              <div class="list-footer"><a>View all notifications</a></div>
             </li>
-
           </ul>
-
         </li>
 
         <li *ngIf="isLoggedIn()" class="nav-item dropdown connection">
-
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-
-            aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+          <a
+            class="nav-link"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-fw fa-th"></i>
+          </a>
 
           <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
-
             <li class="connection-list">
-
               <div class="row">
-
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-
-                  <a routerLink="/dashboard" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=6ocfyfPqD0qz&format=png"
-
-                      alt=""> <span>Dashboard</span></a>
-
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <a routerLink="/dashboard" class="connection-item"
+                    ><img
+                      style="filter: opacity(0.5) drop-shadow(0 0 0 teal)"
+                      src="https://img.icons8.com/?size=512&id=6ocfyfPqD0qz&format=png"
+                      alt=""
+                    />
+                    <span>Dashboard</span></a
+                  >
                 </div>
 
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-
-                  <a routerLink="/dashboard/wallet" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=84933&format=png"
-
-                      alt=""> <span>Wallet</span></a>
-
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <a routerLink="/dashboard/wallet" class="connection-item"
+                    ><img
+                      style="filter: opacity(0.5) drop-shadow(0 0 0 teal)"
+                      src="https://img.icons8.com/?size=512&id=84933&format=png"
+                      alt=""
+                    />
+                    <span>Wallet</span></a
+                  >
                 </div>
 
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-
-                  <a routerLink="/dashboard/portfolio" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);"  src="https://img.icons8.com/?size=512&id=86958&format=png"
-
-                      alt=""> <span>Portfolio</span></a>
-
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <a routerLink="/dashboard/portfolio" class="connection-item"
+                    ><img
+                      style="filter: opacity(0.5) drop-shadow(0 0 0 teal)"
+                      src="https://img.icons8.com/?size=512&id=86958&format=png"
+                      alt=""
+                    />
+                    <span>Portfolio</span></a
+                  >
                 </div>
 
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-
-                  <a routerLink="/dashboard/investnow" class="connection-item"><img style="filter: opacity(0.5) drop-shadow(0 0 0 teal);" src="https://img.icons8.com/?size=512&id=85890&format=png"
-
-                      alt=""> <span>Invest Now</span></a>
-
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <a routerLink="/dashboard" class="connection-item"
+                    ><img
+                      style="filter: opacity(0.5) drop-shadow(0 0 0 teal)"
+                      src="https://img.icons8.com/?size=512&id=85890&format=png"
+                      alt=""
+                    />
+                    <span>Invest Now</span></a
+                  >
                 </div>
-
               </div>
 
               <!-- <div class="row">
@@ -206,91 +207,77 @@
                 </div>
 
               </div> -->
-
             </li>
 
             <li>
-
-              <div class="conntection-footer"><a href="#">More</a></div>
-
+              <div class="conntection-footer"><a>More</a></div>
             </li>
-
           </ul>
-
         </li>
 
         <!-- <li class="nav-item"> -->
 
-          <div
-
+        <div
           *ngIf="!isLoggedIn()"
-
           class="nav-link mr-3 ml-3 align-items-center"
-
           id="navbarNavAltMarkup"
-
         >
+          <button
+            id="login"
+            style="color: teal"
+            class="btn"
+            (click)="goTologin()"
+          >
+            Login
+          </button>
 
-        <button
-
-          id="login"
-
-          style="color:  teal;"
-
-          class="btn"
-
-          (click)="goTologin()"
-
-        >
-
-          Login
-
-        </button>
-
-        <button style="color: teal;" class="btn" (click)="goTosignUp()">
-
-          Signup
-
-        </button>
-
+          <button style="color: teal" class="btn" (click)="goTosignUp()">
+            Signup
+          </button>
         </div>
 
         <!-- </li> -->
 
         <li *ngIf="isLoggedIn()" class="nav-item dropdown nav-user">
+          <a
+            class="nav-link nav-user-img"
+            href="#"
+            id="navbarDropdownMenuLink2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><img
+              src="https://img.icons8.com/dusk/100/000000/user-female-circle.png"
+              alt=""
+              class="user-avatar-md rounded-circle"
+          /></a>
 
-          <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-
-            aria-haspopup="true" aria-expanded="false"><img
-
-              src="https://img.icons8.com/dusk/100/000000/user-female-circle.png" alt=""
-
-              class="user-avatar-md rounded-circle"></a>
-
-          <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-
+          <div
+            class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+            aria-labelledby="navbarDropdownMenuLink2"
+          >
             <div class="nav-user-info">
-
-              <h5 class="mb-0 text-white nav-user-name">{{ getCurrentUser() }}</h5>
+              <h5 class="mb-0 text-white nav-user-name">
+                {{ getCurrentUser() }}
+              </h5>
 
               <span class="status"></span><span class="ml-2">Available</span>
-
             </div>
 
-            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+            <a class="dropdown-item" href="#"
+              ><i class="fas fa-user mr-2"></i>Account</a
+            >
 
-            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+            <a class="dropdown-item" href="#"
+              ><i class="fas fa-cog mr-2"></i>Setting</a
+            >
 
-            <a class="dropdown-item" (click)="logout()"><i class="fas fa-power-off mr-2"></i>Logout</a>
-
+            <a class="dropdown-item" (click)="logout()"
+              ><i class="fas fa-power-off mr-2"></i>Logout</a
+            >
           </div>
-
         </li>
-
       </ul>
-
     </div>
-
   </nav>
-
 </div>
