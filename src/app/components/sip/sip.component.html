@@ -24,7 +24,7 @@
     </div>
     <div style="margin-bottom: 30px; margin-top: 30px">
       <label for="disabledTextInput" class="form-label" style="width: 50%">SIP date</label>
-      <input type="date" class="form-control" placeholder="date" aria-label="Server" name="orderDate" [(ngModel)]="orderDate" required />
+      <input type="date" [min]="orderDate" class="form-control" placeholder="date" aria-label="Server" name="orderDate" [(ngModel)]="orderDate" required />
     </div>
     <!--------------checkboxxx-------------------------------------------->
     <div class="form-check" style="margin-top: 30px; margin-bottom: 30px">
@@ -36,7 +36,9 @@
     <!--- -------- continue button --------------------------------------------->
     <div style="margin-bottom: 90px">
       <button (click)="continue()" type="button" class="btn btn-info" data-bs-toggle="modal"
+      [disabled]="(orderDate=== '' || orderDate===null ) && amount>0 && (freq === '' || freq===null)"
         data-bs-target="#exampleModal">Continue</button>
+
     </div>
   </form>
   <!-- <button >
@@ -70,11 +72,11 @@
             <tbody>
               <tr>
                 <th>Name :-</th>
-                <td>{{fundDetails.schemaName}}</td>
+                <td>{{fundDetails?.schemaName}}</td>
               </tr>
               <tr>
                 <th>Fund House :-</th>
-                <td>{{fundDetails.fundHouse}}</td>
+                <td>{{fundDetails?.fundHouse}}</td>
               </tr>
               <tr>
                 <th>Sip-Frequency :-</th>

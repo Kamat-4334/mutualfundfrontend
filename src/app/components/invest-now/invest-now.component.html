@@ -1,5 +1,45 @@
 
 <app-navbar></app-navbar>
-<!-- <button (click)="simpleAlert()">Hello</button> -->
+<div  class="container-fluid" id="fundsection">
+
+
+  <h1>All FUNDS</h1>
+  <ul id="horizontal-list" class="horizontal-list">
+    <li
+      *ngFor="let fund of mutualFunds"
+      [ngClass]="{ positive: fund.delta > 0, negative: fund.delta < 0 }"
+    >
+      <button
+        class="explore-button"
+
+       [routerLink]="'allfundsdetail/' +fund.schemaId"
+      >
+        {{ fund.schemaName }}
+      </button>
+
+      <div class="details" [class.show]="true">
+        <p><strong>Fund House:</strong> {{ fund.fundHouse }}</p>
+
+        <p><strong>Category:</strong> {{ fund.schemaCategory }}</p>
+
+        <p><strong>Current Price:</strong> {{ fund.currentPrice }}</p>
+
+        <p>
+          <strong>Delta:</strong>
+          <span [class.gain]="fund.delta > 0"
+            >{{ fund.delta > 0 ? "+" : "" }}{{ fund.delta }}</span
+          >
+        </p>
+
+        <button
+          class="view-details"
+          [routerLink]="'allfundsdetail/' + fund.schemaId"
+        >
+          View Details
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
 
 

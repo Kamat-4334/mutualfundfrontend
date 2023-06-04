@@ -105,4 +105,7 @@ export class AllfundsdetailComponent {
   //   this.id = this.route.snapshot.paramMap.get('id');
   //   this.router.navigate(['dashboard/allfundsdetail/'+this.id+'/sip'])
   // }
+  // goToSip(){
+  //   this.router.navigate(["/sip"])
+  // }
 }

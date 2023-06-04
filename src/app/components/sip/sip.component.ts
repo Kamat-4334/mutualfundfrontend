@@ -13,11 +13,12 @@ export class SipComponent {
   fundDetails: any;
   amount: number = 500;
   freq: string = '';
-  orderDate: string = '';
+  orderDate: string = new Date(Date.now()).toLocaleDateString();
   id: string | any = '';
   loading: boolean = false;
-  unit: number |any
+  unit: number | any;
   success: boolean = false;
+  // today:any=
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -25,7 +26,10 @@ export class SipComponent {
     private loginService: LoginService,
     private router: Router
   ) {}
+
   ngOnInit() {
+    this.orderDate = new Date(Date.now()).toLocaleDateString();
+    console.log(this.orderDate);
     this.id = this.route.snapshot.paramMap.get('id');
     this.api.detailById(Number(this.id)).subscribe((data) => {
       this.fundDetails = data[0];
@@ -33,17 +37,16 @@ export class SipComponent {
     });
   }
   continue() {
-    this.unit = (Number(this.amount) / Number(this.fundDetails.currentPrice)).toFixed(3) ;
+    this.unit = (
+      Number(this.amount) / Number(this.fundDetails.currentPrice)
+    ).toFixed(3);
   }
   buymethod() {
     this.loading = true;
 
     this.http
       .post(
-        `http://34.234.150.41:5151/transactions/updateportfolio?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${
-          this.id
-        }&price=${this.amount}&unit=${this.unit}`,
-        {},
+        `http://34.234.150.41:5151/transactions/updateportfolio?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&price=${this.amount}&unit=${this.unit}`,{},
         { responseType: 'text' }
       )
       .subscribe(
@@ -52,9 +55,7 @@ export class SipComponent {
 
           this.http
             .post(
-              `http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${
-                this.id
-              }&type=buy&price=${this.fundDetails.currentPrice}&unit=${this.unit}`,
+              `http://34.234.150.41:5151/transactionhistory/insert?username=${this.loginService.getLoggedInUser()}&mutualFundsId=${this.id}&type=buy&price=${this.fundDetails.currentPrice}&unit=${this.unit}`,
               {}
             )
             .subscribe((res) => {
