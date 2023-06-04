@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { WalletService } from 'src/app/services/wallet.service';
 import { AllfundService } from 'src/app/services/allfund.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -88,7 +89,19 @@ export class PortfolioComponent {
         {}
       )
       .subscribe((res) => {
-        console.log(res);
+        console.log(res)
+        Swal.fire({
+          title:'Sold',
+          text:'Amount has been added to you account!',
+          showConfirmButton:true,
+          confirmButtonText:'ok',
+          confirmButtonColor:'teal'
+        }).then((result)=>{
+          if(result.value){
+
+          }
+        })
+        // alert(res);
       });
   }
 }

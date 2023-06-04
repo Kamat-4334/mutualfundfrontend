@@ -40,7 +40,7 @@ return this.http.put(`http://34.234.150.41:6161/customer/verification?email=${em
     return this.http.get(`http://34.234.150.41:6161/customer/send?email=${email}`)
   }
   getPortfolio(userId:Number){
-    return this.http.get(`http://34.234.150.41:5151/transactionhistory/user/${userId}`)
+    return this.http.get(`http://34.234.150.41:5151/transactions/user/${userId}`)
   }
   //signUp
 

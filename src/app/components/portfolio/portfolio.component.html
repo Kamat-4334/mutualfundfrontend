@@ -81,65 +81,71 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-6 gap-2  pt-3" *ngFor="let obj of portfolio">
-    <!-- <div style="width: 100%"> -->
-      <table
-        class="table-success table-striped"
-        style="width: 100%; padding: 1rem"
-      >
-        <thead>
-          <th>
-            {{ obj.transactionDate | date : "dd/MM/yyyy" }}
-          </th>
+<div class="pt-3" *ngIf="this.portfolio.length!==0">
+  <div class="p-10 bg-surface-secondary">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h6>Portfolio</h6>
+        </div>
+        <div class="table-responsive" >
+          <table class="table table-hover table-nowrap">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Fund Name</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Total</th>
+                <!-- <th scope="col">Date</th> -->
+                <th>Action</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of portfolio" class="zoom">
+                <td data-label="Job Title">
+                  <img alt="..." class="avatar avatar-sm rounded-circle me-2" />
+                  <span class="text-heading font-semibold">
+                    {{ obj.funds?.schemaName }}
+                  </span>
+                </td>
+                <td data-label="Email">
+                  <span>{{ obj.funds?.fundHouse }}</span>
+                </td>
+                <td data-label="Phone">
+                  <span class="text-current">{{ obj.unit }}</span>
+                </td>
+                <td data-label="Lead Score">
+                  <span class="text-current">{{ obj.price }}</span>
+                </td>
+                <td data-label="Company">
+                  <span class="badge bg-soft-success text-success">{{
+                    obj.price * obj.unit
+                  }}</span>
+                </td>
 
-          <th class="d-grid gap-2">
-            <button class="btn" style="background-color: teal;" (click)="sellMethod(obj.funds.schemaId,obj.price,obj.price)">Sell</button>
-          </th>
-        </thead>
-
-        <tbody>
-          <tr>
-            <th>Fund Name:</th>
-
-            <td>
-              {{ obj.funds.schemaName }}
-            </td>
-          </tr>
-
-          <tr>
-            <th>Provider:</th>
-
-            <td>
-              {{ obj.funds.fundHouse }}
-            </td>
-          </tr>
-
-          <tr>
-            <th>Unit:</th>
-
-            <td>
-              {{ obj.unit }}
-            </td>
-          </tr>
-
-          <tr>
-            <th>Unit price:</th>
-
-            <td>
-              {{ obj.price }}
-            </td>
-          </tr>
-
-          <tr>
-            <th>Total :</th>
-
-            <td>
-              {{ obj.price * obj.unit }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <!-- </div> -->
+                <td data-label="">
+                  <button
+                    class="btn"
+                    style="background-color: teal"
+                    (click)="
+                      sellMethod(obj.funds.schemaId, obj.price, obj.unit)
+                    "
+                  >
+                    Sell
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-
+</div>
+  <!-- <td data-label="">
+                    <span class="text-current">{{
+                      obj.transactionDate | date : "dd/MM/yyyy"
+                    }}</span>
+                  </td> -->

@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+
+
+
+
+* {
+
+ box-sizing: border-box;
+
+ margin: 0;
+
+ padding: 0;
+
+}
+
+
+
+
+
+
+.container-fluid-1 {
+
+ display: flex;
+
+ flex-direction: row;
+
+justify-content: center;
+
+ margin-bottom: 20px;
+
+}
+
+
+
+
+.para {
+
+ font-size: 20px;
+
+ margin-bottom: 10px;
+
+ text-align: center;
+
+}
+
+
+
+
+.Mutualfundname {
+
+display: flex;
+
+ flex-direction: column;
+
+ margin-bottom: 20px;
+
+ margin-left: 20px;
+
+ width: 100%;
+
+ max-width: 600px;
+
+ background-color: #fff;
+
+ padding: 20px;
+
+ border-radius: 8px;
+
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+
+.Mutualfundname h1 {
+
+ font-size: 24px;
+
+ margin-bottom: 20px;
+
+ text-align: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+.btn {
+
+ display: inline-block;
+
+ padding: 10px 20px;
+
+ font-size: 16px;
+
+ background-color: #007bff;
+
+ color: #fff;
+
+ border: none;
+
+ border-radius: 4px;
+
+ cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+.container-fluid {
+
+ display: flex;
+
+ flex-wrap: wrap;
+
+ justify-content: center;
+
+}
+
+
+
+
+li {
+
+ list-style-type: none;
+ width: 300px;
+ margin: 20px;
+
+ padding: 20px;
+
+ border-radius: 8px;
+
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+ background-color: #f9f9f9;
+
+ transition: background-color 0.3s ease;
+
+ cursor: pointer;
+
+}
+
+
+
+
+li:hover {
+
+ background-color: #e5e5e5;
+
+}
+
+
+
+
+.details {
+
+ display: none;
+
+ margin-top: 10px;
+
+ padding: 10px;
+
+ border: 1px solid #ccc;
+
+ border-radius: 4px;
+
+ background-color: #ffffff;
+
+}
+
+
+
+
+.show {
+
+ display: block;
+
+}
+
+
+
+
+.explore-button {
+
+ background-color:teal;
+
+ color: #ffffff;
+
+ border: none;
+
+ border-radius: 4px;
+
+ padding: 10px 20px;
+
+ font-size: 16px;
+
+ cursor: pointer;
+
+ transition: background-color 0.3s ease;
+
+}
+
+
+
+
+.explore-button:hover {
+
+ background-color:teal
+
+}
+
+
+
+
+.view-details {
+
+ background-color:teal;
+
+ color: #ffffff;
+
+ border: none;
+
+ border-radius: 4px;
+
+ padding: 5px 10px;
+
+ font-size: 14px;
+
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+
+ margin-top: 10px;
+
+}
+
+
+
+
+.view-details:hover {
+
+ background-color:rgb(18, 145, 145)
+
+}
+
+
+
+
+li.positive {
+
+ background-color: white
+
+}
+
+
+
+
+li.negative {
+
+ background-color: rgb(255, 249, 249);
+
+}
+
+
+
+
+ul {
+
+ display: flex;
+
+ flex-wrap: wrap;
+
+ justify-content: center;
+
+ padding: 0;
+
+}
+
+
+
+
+/* Additions for green effect and light green elements */
+
+
+
+
+.light-green-element {
+
+ background-color: lightgreen;
+
+}
+
+
+
+
+.light-green-element:hover {
+
+ background-color: limegreen;
+
+}
+
+
+
+
+.green-effect {
+
+ background-color: rgba(0, 255, 0, 0.2);
+
+}
+
+
+
+
+.green-effect:hover {
+
+ background-color: rgba(0, 255, 0, 0.4);
+
+}
+.btn-outline-primary, .btn{
+  outline-color: teal;
+  border-color: teal;
+  color: teal;
+  border: solid 2px teal;
+  outline-width: 2px;
+  background-color: inherit;
+}
+.btn:hover{
+  background-color: teal;
+  color: #fff;
+}
+.btn:focus:not(:hover){
+  color: teal;
+}
+
+.btn-outline-primary:active{
+  background-color: teal;
+  color: #fff;
+}
+.btn-outline-primary:focus{
+  background-color: teal;
+  color: #fff;
+}
+.btn:active{
+  outline-color: teal;
+  border-color: teal;
+  color: #fff;
+  box-shadow:  0 0 0 0.25rem rgba(0, 128, 128, 0.596);
+
+}
+.btn:focus{
+  outline-color: teal;
+  border-color: teal;
+  color: #fff;
+  box-shadow:  0 0 0 0.25rem rgba(0, 128, 128, 0.596);
+
+}
+
+
+
+

@@ -8,12 +8,24 @@
   </head>
   <body>
     <div class="position-absolute top-50 start-50 translate-middle">
-      <div class="card" style="width: 18rem; height: 18rem">
+      <div class="card" style="width: 28rem; height: 28rem">
         <div class="card-body">
           <h5 class="card-title text-center" style="color: teal">
             Update Password
           </h5>
-          <form>
+          <form [formGroup]="passwordForm" (ngSubmit)="updateNewPassword()">
+            <div class="form-group">
+              <label for="otp">OTP</label>
+              <input
+                type="number"
+                id="otp"
+                name="otp"
+                class="form-control"
+                placeholder="enter the otp!"
+                formControlName="otp"
+                [ngClass]="{'is-invalid':submitted && form['otp'].errors}"
+              />
+            </div>
             <div class="form-group">
               <label for="password">Password</label>
               <input
@@ -22,31 +34,34 @@
                 name="password"
                 class="form-control"
                 placeholder="enter the password!"
-                [(ngModel)]="password"
+                formControlName="password"
+                [ngClass]="{'is-invalid':submitted && form['password'].errors}"
               />
+              <!-- [(ngModel)]="password" -->
             </div>
             <br />
             <div class="form-group">
               <label for="confirmPassword">Confirm Password</label>
               <input
-              id="confirmPassword"
-              name="confirmPassword"
+                id="confirmPassword"
+                name="confirmPassword"
                 type="confirmPassword"
                 class="form-control"
-                [(ngModel)]="confirmPassword"
-
                 placeholder="enter confirm password!"
-
+                formControlName="confirmPassword"
+                [ngClass]="{'is-invalid':submitted && form['confirmPassword'].errors}"
               />
+              <!-- [(ngModel)]="confirmPassword" -->
             </div>
-            <br>
+            <br />
 
-            <a
+            <button
               class="btn btn-success d-grid"
               style="background-color: teal"
-              (click)="showUpdate()"
-              >Update</a
             >
+              Update
+            </button>
+            <!-- (click)="showUpdate()" -->
           </form>
         </div>
       </div>

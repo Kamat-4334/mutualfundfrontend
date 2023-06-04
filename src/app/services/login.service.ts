@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { baseUrl } from '../config';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
+import { UpdatePassword } from '../classes/update-password';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -89,7 +91,9 @@ export class LoginService {
     return this.http.get(`http://34.234.150.41:6161/customer/send?email=${email}`)
   }
 
-  updatepassword(password:string,confirm_password:string){
-    return this.http.get(`http://34.234.150.41:6161/customer/update?password=${password}&otp=${confirm_password}`)
-  }
+  updatepassword(otp:number,user:UpdatePassword){
+    const url =`http://34.234.150.41:6161/customer/update/password?otp=${otp}`
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.patch(url,user,{headers:headers,responseType:'text'})
+      }
 }
